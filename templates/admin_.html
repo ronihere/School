@@ -1,0 +1,37 @@
+ <html>
+{% extends 'base_3w.html' %}
+{% load static %}
+<head>
+ <title>Admin-todo</title>
+   <style>
+    .btn{
+        text-decoration: none;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color:white;
+        color : black;
+        padding: 7px 10px;
+        font-size: 15px;
+        cursor:ponter
+        }
+        .success{
+        border-color:#04aa6d;
+        color:green;
+        }
+        .success:hover{
+        background-color:#04aa6d;
+        color:white;
+        }
+    </style>
+</head>
+ <body>
+{% block content %}
+{% if request.user.is_authenticated %}
+ <p>hi <strong>{{user}}</strong></p>
+ {% for work in works %}
+<p> ~  Due date for : <strong>{{work.work_due }}</strong> is : <strong>{{work.due_date}}</strong><button class="btn success"><a href="delete_todo/{{work.id}}">Delete</a></button>
+ {% endfor %}
+ {% endif %}
+{% endblock %}
+ </body>
+ </html>
